@@ -63,7 +63,9 @@ private final class TweakDiskPersistency {
 	private let fileURL: URL
 
 	private static func fileURLForIdentifier(_ identifier: String) -> URL {
-		return try! FileManager().url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+		// TODO(huey): Don't hardcode this.
+    return FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.tech.broadsheet")!
+		// return try! FileManager().url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
 			.appendingPathComponent("SwiftTweaks")
 			.appendingPathComponent("\(identifier)")
 			.appendingPathExtension("db")
